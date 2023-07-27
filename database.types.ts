@@ -77,7 +77,7 @@ export interface Database {
         Relationships: []
       }
       notes: {
-        Row: {
+        Rows: {
           created_at: string
           id: string
           title: string | null
