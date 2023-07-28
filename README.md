@@ -1,35 +1,35 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Next.js 13 概要
 
-## Getting Started
+- ### Server components (force-cache, no-store, revalidate)
+  app ディレクトリに作成したファイルはデフォルトではすべて Server Component 
+  `force-cache`は
+  `no-store`は
+  `revalidate`は
+- ### Client components
+  クライアント側でインタラクティブな処理を行うためのcomponents
+- ### Nested Layout
 
-First, run the development server:
+- ### Suspense
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+  以下のようにすることで、MyComponent がレンダリングされる前に必要なデータがまだロードされていない場合、React は`<div>Loading...</div>`を代わりに表示
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+  ```tsx
+  <Suspense fallback={<div>Loading...</div>}>
+    <MyComponent />
+  </Suspense>
+  ```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- ### Soft navigation and Hard navigation
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+  Next.js version 13.4 以降では、`router.push()`の場合、`初回だけ`Hard Navigation する使用になっている。2 回目以降は Soft Navigation
 
-## Learn More
+  また、`Dinamic Segment` のパラメータが変わるたびに `Hard Navigation` になる。
 
-To learn more about Next.js, take a look at the following resources:
+- ### Dynamic segment + generateStaticParams
+  generateStaticParams(SSG の設定)
+  `Dynamic Route` を利用している場合に存在するページの一覧を定義することでビルド時に静的ファイルを作成してくれます。page ディレクトリで利用していた getStaticPaths と同じような設定を行います。
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- ### Streaming HTML
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
-# next-generation-nextjs-13-supabase
+- ### Revalidating Data(ISR)
+  最初のリクエストが行われてから ⚪︎ 秒過ぎてアクセスがあった場合に静的ファイルの更新を行う
