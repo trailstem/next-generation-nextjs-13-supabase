@@ -3,7 +3,8 @@ export const revalidate = 0
 import { Suspense } from "react"
 import BlogList from "../components/blog-list"
 import NewsList  from "../components/news-list"
-import Spinner from "../components/Spinner"
+import Spinner from "../components/spinner"
+
 
 export default function StreamingServerRenderingPage() {
   return (
