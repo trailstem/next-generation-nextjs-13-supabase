@@ -35,3 +35,25 @@
 
 - ### Revalidating Data(ISR)
   最初のリクエストが行われてから ⚪︎ 秒過ぎてアクセスがあった場合に静的ファイルの更新を行う
+
+---
+
+## Server component と Client component の違い
+
+#### Server component
+
+- サーバでレンダリングされる
+- Data fetch に async function を使用できる
+- Secure key を使用可能
+- Browser API は使用不可
+- useState, useEffect 等は使用不可
+- Event lister(onClick 等)は使用不可
+
+#### Client component
+
+- ブラウザで JS 実行される
+- Data fetch に async function を使用できない
+- useEffect, React-query, SWR, use を使用する必要がある
+- Secure key を使用不可
+- useState, useEffect 等を使用可
+- Event lister(onClick 等)は使用可
