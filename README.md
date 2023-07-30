@@ -57,3 +57,5 @@
 - Secure key を使用不可
 - useState, useEffect 等を使用可
 - Event lister(onClick 等)は使用可
+
+<span style="color:red">Server components から Client Components は使用できるが、Client components から Server components は使用できません。</span>
